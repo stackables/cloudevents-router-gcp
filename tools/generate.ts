@@ -23,7 +23,7 @@ async function main() {
 
     await fs.writeFile(dest, finalFile)
 
-    console.log(`Storing generated google events at ${dest}`)
+    return `Generated Google events mapping to ${dest}`
 }
 
-main()
+main().catch(console.error).then(console.log)
