@@ -1,0 +1,49 @@
+{
+  "name": "cloudevents-router-gcp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./build/src/index.js",
+  "types": "./build/src/index.d.ts",
+  "keywords": [
+    "cloudevents",
+    "router",
+    "stackables",
+    "gcp"
+  ],
+  "files": [
+    "build/src"
+  ],
+  "scripts": {
+    "prepack": "tsc",
+    "test": "jest",
+    "generate": "ts-node ./tools/generate.ts",
+    "semantic-release": "semantic-release -b main --no-ci"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stackables/cloudevents-router-gcp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stackables/cloudevents-router-gcp/issues"
+  },
+  "homepage": "https://github.com/stackables/cloudevents-router-gcp#readme",
+  "dependencies": {
+    "@google/events": "^5.1.0"
+  },
+  "peerDependencies": {
+    "cloudevents-router": "^1.0.2"
+  },
+  "devDependencies": {
+    "@tsconfig/node16": "^1.0.2",
+    "axios": "^0.21.1",
+    "semantic-release": "^17.4.7",
+    "ts-jest": "^27.0.5",
+    "ts-node": "^10.2.1",
+    "typescript": "^4.4.2"
+  },
+  "jest": {
+    "preset": "ts-jest"
+  }
+}
