@@ -1,7 +1,7 @@
 {
   "name": "cloudevents-router-gcp",
   "version": "1.0.0",
-  "description": "",
+  "description": "Google CloudEvents type mapping for cloudevents-router package",
   "main": "./build/src/index.js",
   "types": "./build/src/index.d.ts",
   "keywords": [
