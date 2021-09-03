@@ -17,7 +17,7 @@
     "prepack": "tsc",
     "test": "jest",
     "generate": "ts-node ./tools/generate.ts",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release -b main"
   },
   "repository": {
     "type": "git",
