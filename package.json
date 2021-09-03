@@ -24,7 +24,7 @@
     "url": "git+https://github.com/stackables/cloudevents-router-gcp.git"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/stackables/cloudevents-router-gcp/issues"
   },
