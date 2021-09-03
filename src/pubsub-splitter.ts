@@ -1,38 +1,30 @@
-import { Message, MessagePublishedData } from '@google/events/cloud/pubsub/v1/MessagePublishedData'
-import { CloudEventsRouter } from 'cloudevents-router'
+import type { CloudEventsRouter } from 'cloudevents-router'
 import { GoogleEvents } from '.'
 
-export type PubSubParsedMessage<T> =
-    Omit<MessagePublishedData, "message"> & {
-        message: Omit<Message, "data"> & {
-            data: T
-            messageId: string
-        }
-    }
-
-type PublishOptions = {
-    include: string[]
+type PublishOptions<T> = {
+    topics: { [key: string]: keyof T }
+    onUnhandled?: 'DEFAULT' | 'REJECT' | 'IGNORE'
 }
 
-export function republishPubSubByTopic(events: CloudEventsRouter<GoogleEvents>, opts: PublishOptions) {
+export function republishPubSubByTopic<T extends GoogleEvents>(events: CloudEventsRouter<T>, opts: PublishOptions<T>) {
 
     events.on('google.cloud.pubsub.topic.v1.messagePublished', (event) => {
 
-        // //pubsub.googleapis.com/projects/serverless-com-demo/topics/my-topic
-        const topicMatch = event.source.match(/.*\/topics\/([^\/]+)/)
-        if (!topicMatch) {
-            throw new Error('Unable to determine topic')
-        }
+        // Topic format "//pubsub.googleapis.com/projects/serverless-com-demo/topics/my-topic"
+        const topic = event.source.split('/').pop() as string
+        const mapped = opts.topics?.[topic]
 
-        const topic = topicMatch[1]
-
-        if (!opts.include.includes(topic)) {
+        if (!mapped && opts.onUnhandled === 'REJECT') {
             throw new Error('Message from unknown topic: ' + topic)
         }
 
-        // Republish the event as local.pubsub.topic.*
+        if (!mapped && opts.onUnhandled === 'IGNORE') {
+            return
+        }
+
+        // Republish event
         const e = event.cloneWith({
-            type: 'local.pubsub.topic.' + topic,
+            type: mapped,
             data: {
                 ...event.data,
                 message: {
@@ -41,6 +33,7 @@ export function republishPubSubByTopic(events: CloudEventsRouter<GoogleEvents>, 
                 }
             }
         })
+
         return events.process(e)
     })
 

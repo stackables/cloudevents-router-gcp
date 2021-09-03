@@ -37,7 +37,11 @@
   },
   "devDependencies": {
     "@tsconfig/node16": "^1.0.2",
+    "@types/jest": "^27.0.1",
+    "@types/omit-deep-lodash": "^1.1.1",
     "axios": "^0.21.1",
+    "cloudevents": "^4.0.3",
+    "omit-deep-lodash": "^1.1.5",
     "semantic-release": "^17.4.7",
     "ts-jest": "^27.0.5",
     "ts-node": "^10.2.1",
