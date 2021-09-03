@@ -1,4 +1,5 @@
 [![npm](https://img.shields.io/npm/v/cloudevents-router-gcp?label=cloudevents-router-gcp&logo=npm)](https://www.npmjs.com/package/cloudevents-router-gcp)
+[![codecov](https://codecov.io/gh/stackables/cloudevents-router-gcp/branch/main/graph/badge.svg?token=aG61BAKNaU)](https://codecov.io/gh/stackables/cloudevents-router-gcp)
 
 # GCP CloudEvents mapping
 
