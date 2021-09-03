@@ -120,8 +120,7 @@ republishPubSubByTopic(router, {
     topics: {
         'user-added-topic': 'pubsub.userAdded',
         'profile-changed-topic': 'pubsub.profileChanged'
-    },
-    onUnhandled: 'DEFAULT'
+    }
 })
 
 // setup server as above
