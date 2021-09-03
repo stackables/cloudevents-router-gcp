@@ -1,0 +1,128 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Republish PubSub example - default 1`] = `
+Array [
+  Object {
+    "data_base64": undefined,
+    "datacontentencoding": undefined,
+    "datacontenttype": undefined,
+    "dataschema": undefined,
+    "schemaurl": undefined,
+    "source": "//pubsub.googleapis.com/projects/test-project-id/topics/profile-changed-topic",
+    "specversion": "1.0",
+    "subject": undefined,
+    "type": "pubsub.profileChanged",
+  },
+  Object {
+    "message": Object {
+      "data": Object {
+        "profilePicture": "http://picture.com",
+        "username": "testuser1",
+      },
+      "messageId": "my-message-id",
+      "publishTime": "2020-08-14T20:50:04.994Z",
+    },
+    "subscription": "subscription",
+  },
+  Object {
+    "data_base64": undefined,
+    "datacontentencoding": undefined,
+    "datacontenttype": undefined,
+    "dataschema": undefined,
+    "schemaurl": undefined,
+    "source": "//pubsub.googleapis.com/projects/test-project-id/topics/user-added-topic",
+    "specversion": "1.0",
+    "subject": undefined,
+    "type": "pubsub.userAdded",
+  },
+  Object {
+    "message": Object {
+      "data": Object {
+        "password": "***",
+        "username": "testuser1",
+      },
+      "messageId": "my-message-id",
+      "publishTime": "2020-08-14T20:50:04.994Z",
+    },
+    "subscription": "subscription",
+  },
+]
+`;
+
+exports[`Republish PubSub example - empty 1`] = `
+Array [
+  Object {
+    "data_base64": undefined,
+    "datacontentencoding": undefined,
+    "datacontenttype": undefined,
+    "dataschema": undefined,
+    "schemaurl": undefined,
+    "source": "//pubsub.googleapis.com/projects/test-project-id/topics/empty-message-test",
+    "specversion": "1.0",
+    "subject": undefined,
+    "type": "pubsub.emptyData",
+  },
+  Object {
+    "message": Object {
+      "data": undefined,
+      "messageId": "my-message-id",
+      "publishTime": "2020-08-14T20:50:04.994Z",
+    },
+    "subscription": "subscription",
+  },
+]
+`;
+
+exports[`Republish PubSub example - ignore 1`] = `
+Array [
+  Object {
+    "data_base64": undefined,
+    "datacontentencoding": undefined,
+    "datacontenttype": undefined,
+    "dataschema": undefined,
+    "schemaurl": undefined,
+    "source": "//pubsub.googleapis.com/projects/test-project-id/topics/profile-changed-topic",
+    "specversion": "1.0",
+    "subject": undefined,
+    "type": "pubsub.profileChanged",
+  },
+  Object {
+    "message": Object {
+      "data": Object {
+        "profilePicture": "http://picture.com",
+        "username": "testuser1",
+      },
+      "messageId": "my-message-id",
+      "publishTime": "2020-08-14T20:50:04.994Z",
+    },
+    "subscription": "subscription",
+  },
+]
+`;
+
+exports[`Republish PubSub example - reject 1`] = `
+Array [
+  Object {
+    "data_base64": undefined,
+    "datacontentencoding": undefined,
+    "datacontenttype": undefined,
+    "dataschema": undefined,
+    "schemaurl": undefined,
+    "source": "//pubsub.googleapis.com/projects/test-project-id/topics/profile-changed-topic",
+    "specversion": "1.0",
+    "subject": undefined,
+    "type": "pubsub.profileChanged",
+  },
+  Object {
+    "message": Object {
+      "data": Object {
+        "profilePicture": "http://picture.com",
+        "username": "testuser1",
+      },
+      "messageId": "my-message-id",
+      "publishTime": "2020-08-14T20:50:04.994Z",
+    },
+    "subscription": "subscription",
+  },
+]
+`;
