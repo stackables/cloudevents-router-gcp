@@ -1,3 +1,5 @@
+[![npm](https://img.shields.io/npm/v/cloudevents-router-gcp?label=cloudevents-router-gcp&logo=npm)](https://www.npmjs.com/package/cloudevents-router-gcp)
+
 # GCP CloudEvents mapping
 
 This library is designed to work with [cloudevents-router](https://github.com/stackables/cloudevents-router) package.
