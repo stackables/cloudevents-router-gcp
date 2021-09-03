@@ -128,6 +128,30 @@ republishPubSubByTopic(router, {
 server.listen(5000);
 ```
 
+## GCP PubSub payloads
+
+GCP is publishing data in some known but not too well documented formats. 
+
+| Service | Description | Messages |
+| ---- | ----------- | ------- |
+| [container-registry](https://cloud.google.com/container-registry/docs/configuring-notifications) | Every time container registry is updated a message is published to `grc` topic | [pubsub.ArtifactMessage](https://github.com/stackables/cloudevents-router-gcp/blob/main/src/gcp/artifacts.ts) |
+| [cloud-build](https://cloud.google.com/build/docs/subscribe-build-notifications) | Cloud Build publishes messages on a Google Pub/Sub topic called `cloud-builds` when your build's state changes | TODO |
+| [alert-center](https://developers.google.com/admin-sdk/alertcenter/guides/notifications) | Alert Center can push notifications to user defined pubsub topic | TODO |
+
+_There are many more, if you are using one of them and its not implemented, please feel free to create a pull request so others can also benefit._
+
+usage is the same as for manually typed messages.
+
+```typescript
+import { messages } from 'cloudevents-router-gcp'
+
+const EventMap = {
+    'artifact.published': messages.ArtifactMessage
+}
+
+// ...
+```
+
 ## Thats it ...
 
 ... happy coding :)
