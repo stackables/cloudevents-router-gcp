@@ -7,7 +7,7 @@ This library is designed to work with [cloudevents-router](https://github.com/st
 
 We generate a mapping for all Google CloudEvents based on JSON Schema catalog published at [googleapis/google-cloudevents](https://github.com/googleapis/google-cloudevents)
 
-Last update: 2021-09-03
+Last update: 2021-09-08
 
 ## Install
 

@@ -2,7 +2,7 @@ import path from 'path'
 import axios from 'axios'
 import fs = require('fs/promises')
 
-const source = 'https://raw.githubusercontent.com/googleapis/google-cloudevents/master/jsonschema/catalog.json'
+export const source = 'https://raw.githubusercontent.com/googleapis/google-cloudevents/master/jsonschema/catalog.json'
 const dest = path.join(__dirname, '..', 'src', 'generated.ts')
 
 async function main() {
@@ -26,4 +26,8 @@ async function main() {
     return `Generated Google events mapping to ${dest}`
 }
 
-main().catch(console.error).then(console.log)
+
+if (require.main === module) {
+    /* istanbul ignore next */
+    main().catch(console.error).then(console.log)
+}
