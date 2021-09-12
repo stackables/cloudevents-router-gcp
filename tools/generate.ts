@@ -1,5 +1,7 @@
-import path from 'path'
+/* istanbul ignore file */
+
 import axios from 'axios'
+import path from 'path'
 import fs = require('fs/promises')
 
 export const source = 'https://raw.githubusercontent.com/googleapis/google-cloudevents/master/jsonschema/catalog.json'
@@ -28,6 +30,5 @@ async function main() {
 
 
 if (require.main === module) {
-    /* istanbul ignore next */
     main().catch(console.error).then(console.log)
 }

@@ -9,6 +9,8 @@ We generate a mapping for all Google CloudEvents based on JSON Schema catalog pu
 
 Last update: 2021-09-08
 
+[![Monitor Changes](https://github.com/stackables/cloudevents-router-gcp/actions/workflows/changed.yml/badge.svg)](https://github.com/stackables/cloudevents-router-gcp/actions/workflows/changed.yml)
+
 ## Install
 
 ```bash
@@ -18,7 +20,7 @@ npm install cloudevents-router-gcp
 ## Use just types
 
 ```typescript
-import type { GoogleEvents } from 'cloudevents-router-gcp'
+import type { GoogleEvents } from "cloudevents-router-gcp";
 
 /*
 Will be equal to the following code snippet:
@@ -38,19 +40,19 @@ export type GoogleEvents = {
 ## Use with cloudevents-router
 
 ```typescript
-import type { GoogleEvents } from 'cloudevents-router-gcp'
-import { CloudEventsRouter, getMiddleware } from 'cloudevents-router'
-import http from "http"
+import type { GoogleEvents } from "cloudevents-router-gcp";
+import { CloudEventsRouter, getMiddleware } from "cloudevents-router";
+import http from "http";
 
-const router = new CloudEventsRouter<GoogleEvents>()
+const router = new CloudEventsRouter<GoogleEvents>();
 
-router.on('google.cloud.pubsub.topic.v1.messagePublished', async (event) => {
-    console.log('PubSub ordering key', event.data.message?.orderingKey)
-})
+router.on("google.cloud.pubsub.topic.v1.messagePublished", async (event) => {
+  console.log("PubSub ordering key", event.data.message?.orderingKey);
+});
 
 // See cloudevents-router documentation for more integration examples
-const middleware = getMiddleware(router, { path: '/' })
-const server = http.createServer(middleware)
+const middleware = getMiddleware(router, { path: "/" });
+const server = http.createServer(middleware);
 
 server.listen(5000);
 ```
@@ -63,14 +65,14 @@ Payload is passed as `string` or `undefined`, and all topics end up in the same 
 
 ```typescript
 interface MessagePublishedData {
-  subscription?: string
-  message?:  {
-    attributes?: {[key: string]: string}
-    data?: string
-    messageId?: string
-    orderingKey?: string
-    publishTime?: Date | string
-  }
+  subscription?: string;
+  message?: {
+    attributes?: { [key: string]: string };
+    data?: string;
+    messageId?: string;
+    orderingKey?: string;
+    publishTime?: Date | string;
+  };
 }
 ```
 
@@ -79,20 +81,20 @@ To make it a bit less painful we ship a `PubSubParsedMessage<T>` generic type an
 ### 1. Define your JSON message types
 
 ```typescript
-import type { GoogleEvents, PubSubParsedMessage } from 'cloudevents-router-gcp'
+import type { GoogleEvents, PubSubParsedMessage } from "cloudevents-router-gcp";
 
 // Define message payload type
 type EventMap = GoogleEvents & {
-    'pubsub.userAdded': PubSubParsedMessage<{
-        username: string
-        password: string
-        age?: number
-    }>
-    'pubsub.profileChanged': PubSubParsedMessage<{
-        username: string
-        profilePicture: string
-    }>
-}
+  "pubsub.userAdded": PubSubParsedMessage<{
+    username: string;
+    password: string;
+    age?: number;
+  }>;
+  "pubsub.profileChanged": PubSubParsedMessage<{
+    username: string;
+    profilePicture: string;
+  }>;
+};
 ```
 
 This will replace data attribute (`data?: string`) in the original `MessagePublishedData` type with a more useful extracted type definition.
@@ -100,13 +102,13 @@ This will replace data attribute (`data?: string`) in the original `MessagePubli
 ### 2. Write handlers for your messages
 
 ```typescript
-import { CloudEventsRouter } from 'cloudevents-router'
+import { CloudEventsRouter } from "cloudevents-router";
 
-const router = new CloudEventsRouter<EventMap>()
+const router = new CloudEventsRouter<EventMap>();
 
-router.on('pubsub.profileChanged', async (event) => {
-    console.log('Profile picture added', event.data.message?.data.profilePicture)
-})
+router.on("pubsub.profileChanged", async (event) => {
+  console.log("Profile picture added", event.data.message?.data.profilePicture);
+});
 ```
 
 ### 3. Parse and consume PubSub messages
@@ -114,17 +116,17 @@ router.on('pubsub.profileChanged', async (event) => {
 To use the above handler we need to parse and republish PubSub messages
 
 ```typescript
-import { republishPubSubByTopic } from 'cloudevents-router-gcp'
+import { republishPubSubByTopic } from "cloudevents-router-gcp";
 
 // use the router from above
 // const router = ...
 
 republishPubSubByTopic(router, {
-    topics: {
-        'user-added-topic': 'pubsub.userAdded',
-        'profile-changed-topic': 'pubsub.profileChanged'
-    }
-})
+  topics: {
+    "user-added-topic": "pubsub.userAdded",
+    "profile-changed-topic": "pubsub.profileChanged",
+  },
+});
 
 // setup server as above
 // const server = ...
@@ -133,24 +135,24 @@ server.listen(5000);
 
 ## GCP PubSub payloads
 
-GCP is publishing data in some known but not too well documented formats. 
+GCP is publishing data in some known but not too well documented formats.
 
-| Service | Description | Messages |
-| ---- | ----------- | ------- |
-| [container-registry](https://cloud.google.com/container-registry/docs/configuring-notifications) | Every time container registry is updated a message is published to `grc` topic | [pubsub.ArtifactMessage](https://github.com/stackables/cloudevents-router-gcp/blob/main/src/gcp/artifacts.ts) |
-| [cloud-build](https://cloud.google.com/build/docs/subscribe-build-notifications) | Cloud Build publishes messages on a Google Pub/Sub topic called `cloud-builds` when your build's state changes | TODO |
-| [alert-center](https://developers.google.com/admin-sdk/alertcenter/guides/notifications) | Alert Center can push notifications to user defined pubsub topic | TODO |
+| Service                                                                                          | Description                                                                                                    | Messages                                                                                                      |
+| ------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| [container-registry](https://cloud.google.com/container-registry/docs/configuring-notifications) | Every time container registry is updated a message is published to `grc` topic                                 | [pubsub.ArtifactMessage](https://github.com/stackables/cloudevents-router-gcp/blob/main/src/gcp/artifacts.ts) |
+| [cloud-build](https://cloud.google.com/build/docs/subscribe-build-notifications)                 | Cloud Build publishes messages on a Google Pub/Sub topic called `cloud-builds` when your build's state changes | TODO                                                                                                          |
+| [alert-center](https://developers.google.com/admin-sdk/alertcenter/guides/notifications)         | Alert Center can push notifications to user defined pubsub topic                                               | TODO                                                                                                          |
 
 _There are many more, if you are using one of them and its not implemented, please feel free to create a pull request so others can also benefit._
 
 usage is the same as for manually typed messages.
 
 ```typescript
-import { messages } from 'cloudevents-router-gcp'
+import { messages } from "cloudevents-router-gcp";
 
 const EventMap = {
-    'artifact.published': messages.ArtifactMessage
-}
+  "artifact.published": messages.ArtifactMessage,
+};
 
 // ...
 ```
