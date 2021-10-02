@@ -7,10 +7,6 @@ This library is designed to work with [cloudevents-router](https://github.com/st
 
 We generate a mapping for all Google CloudEvents based on JSON Schema catalog published at [googleapis/google-cloudevents](https://github.com/googleapis/google-cloudevents)
 
-Last update: 2021-09-08
-
-[![Monitor Changes](https://github.com/stackables/cloudevents-router-gcp/actions/workflows/changed.yml/badge.svg)](https://github.com/stackables/cloudevents-router-gcp/actions/workflows/changed.yml)
-
 ## Install
 
 ```bash

@@ -9,3 +9,9 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "daily"
+    allow:
+      - dependency-name: "@google/events"
+        update-types: ["version-update:semver-major", "version-update:semver-minor", "version-update:semver-patch"]
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-minor", "version-update:semver-patch"]
