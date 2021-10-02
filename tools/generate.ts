@@ -8,7 +8,7 @@ export const source = 'https://raw.githubusercontent.com/googleapis/google-cloud
 const dest = path.join(__dirname, '..', 'src', 'generated.ts')
 
 async function main() {
-    const { data } = await axios.get(source)
+    const { data } = await axios.get<any>(source)
 
     const imports: string[] = []
     const output: string[] = ['export type GoogleEvents = {']
