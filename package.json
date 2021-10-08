@@ -33,7 +33,7 @@
     "@google/events": "^5.1.1"
   },
   "peerDependencies": {
-    "cloudevents-router": "^1.0.3"
+    "cloudevents-router": "^1.1.0"
   },
   "devDependencies": {
     "@tsconfig/node16": "^1.0.2",
@@ -41,7 +41,7 @@
     "@types/object-hash": "^2.2.1",
     "@types/omit-deep-lodash": "^1.1.1",
     "axios": "^0.22.0",
-    "cloudevents": "^4.0.3",
+    "cloudevents": "^5.0.0",
     "object-hash": "^2.2.0",
     "omit-deep-lodash": "^1.1.5",
     "semantic-release": "^18.0.0",
