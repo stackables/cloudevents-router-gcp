@@ -24,7 +24,7 @@ export function republishPubSubByTopic<T extends GoogleEvents>(events: CloudEven
 
         // Republish event
         const e = event.cloneWith({
-            type: mapped,
+            type: String(mapped),
             data: {
                 ...event.data,
                 message: {

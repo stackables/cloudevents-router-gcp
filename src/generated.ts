@@ -7,7 +7,9 @@ import { StorageObjectData } from '@google/events/cloud/storage/v1/StorageObject
 import { AnalyticsLogData } from '@google/events/firebase/analytics/v1/AnalyticsLogData'
 import { AuthEventData } from '@google/events/firebase/auth/v1/AuthEventData'
 import { ReferenceEventData } from '@google/events/firebase/database/v1/ReferenceEventData'
+import { AlertData } from '@google/events/firebase/firebasealerts/v1/AlertData'
 import { RemoteConfigEventData } from '@google/events/firebase/remoteconfig/v1/RemoteConfigEventData'
+import { TestMatrixEventData } from '@google/events/firebase/testlab/v1/TestMatrixEventData'
 
 export type GoogleEvents = {
   'google.cloud.audit.log.v1.written': LogEntryData
@@ -29,5 +31,7 @@ export type GoogleEvents = {
   'google.firebase.database.ref.v1.updated': ReferenceEventData
   'google.firebase.database.ref.v1.deleted': ReferenceEventData
   'google.firebase.database.ref.v1.written': ReferenceEventData
+  'google.firebase.firebasealerts.alerts.v1.published': AlertData
   'google.firebase.remoteconfig.remoteConfig.v1.updated': RemoteConfigEventData
+  'google.firebase.testlab.testMatrix.v1.completed': TestMatrixEventData
 }
