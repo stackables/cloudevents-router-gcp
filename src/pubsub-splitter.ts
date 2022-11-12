@@ -12,7 +12,7 @@ export function republishPubSubByTopic<T extends GoogleEvents>(events: CloudEven
 
         // Topic format "//pubsub.googleapis.com/projects/serverless-com-demo/topics/my-topic"
         const topic = event.source.split('/').pop() as string
-        const mapped = opts.topics?.[topic]
+        const mapped = opts.topics?.[topic] as string
 
         if (!mapped && opts.onUnhandled === 'REJECT') {
             throw new Error('Message from unknown topic: ' + topic)
@@ -28,8 +28,8 @@ export function republishPubSubByTopic<T extends GoogleEvents>(events: CloudEven
             data: {
                 ...event.data,
                 message: {
-                    ...event.data.message,
-                    data: event.data.message?.data ? JSON.parse(Buffer.from(event.data.message.data, 'base64').toString()) : undefined
+                    ...event.data?.message,
+                    data: event.data?.message?.data ? JSON.parse(Buffer.from(event.data.message.data, 'base64').toString()) : undefined
                 }
             }
         })

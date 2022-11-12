@@ -1,8 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Republish PubSub example - default 1`] = `
-Array [
-  Object {
+[
+  {
+    "data": {
+      "message": {
+        "data": {
+          "profilePicture": "http://picture.com",
+          "username": "testuser1",
+        },
+        "messageId": "my-message-id",
+        "publishTime": "2020-08-14T20:50:04.994Z",
+      },
+      "subscription": "subscription",
+    },
     "data_base64": undefined,
     "datacontentencoding": undefined,
     "datacontenttype": undefined,
@@ -13,9 +24,9 @@ Array [
     "subject": undefined,
     "type": "pubsub.profileChanged",
   },
-  Object {
-    "message": Object {
-      "data": Object {
+  {
+    "message": {
+      "data": {
         "profilePicture": "http://picture.com",
         "username": "testuser1",
       },
@@ -24,7 +35,18 @@ Array [
     },
     "subscription": "subscription",
   },
-  Object {
+  {
+    "data": {
+      "message": {
+        "data": {
+          "password": "***",
+          "username": "testuser1",
+        },
+        "messageId": "my-message-id",
+        "publishTime": "2020-08-14T20:50:04.994Z",
+      },
+      "subscription": "subscription",
+    },
     "data_base64": undefined,
     "datacontentencoding": undefined,
     "datacontenttype": undefined,
@@ -35,9 +57,9 @@ Array [
     "subject": undefined,
     "type": "pubsub.userAdded",
   },
-  Object {
-    "message": Object {
-      "data": Object {
+  {
+    "message": {
+      "data": {
         "password": "***",
         "username": "testuser1",
       },
@@ -50,8 +72,16 @@ Array [
 `;
 
 exports[`Republish PubSub example - empty 1`] = `
-Array [
-  Object {
+[
+  {
+    "data": {
+      "message": {
+        "data": undefined,
+        "messageId": "my-message-id",
+        "publishTime": "2020-08-14T20:50:04.994Z",
+      },
+      "subscription": "subscription",
+    },
     "data_base64": undefined,
     "datacontentencoding": undefined,
     "datacontenttype": undefined,
@@ -62,8 +92,8 @@ Array [
     "subject": undefined,
     "type": "pubsub.emptyData",
   },
-  Object {
-    "message": Object {
+  {
+    "message": {
       "data": undefined,
       "messageId": "my-message-id",
       "publishTime": "2020-08-14T20:50:04.994Z",
@@ -74,8 +104,19 @@ Array [
 `;
 
 exports[`Republish PubSub example - ignore 1`] = `
-Array [
-  Object {
+[
+  {
+    "data": {
+      "message": {
+        "data": {
+          "profilePicture": "http://picture.com",
+          "username": "testuser1",
+        },
+        "messageId": "my-message-id",
+        "publishTime": "2020-08-14T20:50:04.994Z",
+      },
+      "subscription": "subscription",
+    },
     "data_base64": undefined,
     "datacontentencoding": undefined,
     "datacontenttype": undefined,
@@ -86,9 +127,9 @@ Array [
     "subject": undefined,
     "type": "pubsub.profileChanged",
   },
-  Object {
-    "message": Object {
-      "data": Object {
+  {
+    "message": {
+      "data": {
         "profilePicture": "http://picture.com",
         "username": "testuser1",
       },
@@ -101,8 +142,19 @@ Array [
 `;
 
 exports[`Republish PubSub example - reject 1`] = `
-Array [
-  Object {
+[
+  {
+    "data": {
+      "message": {
+        "data": {
+          "profilePicture": "http://picture.com",
+          "username": "testuser1",
+        },
+        "messageId": "my-message-id",
+        "publishTime": "2020-08-14T20:50:04.994Z",
+      },
+      "subscription": "subscription",
+    },
     "data_base64": undefined,
     "datacontentencoding": undefined,
     "datacontenttype": undefined,
@@ -113,9 +165,9 @@ Array [
     "subject": undefined,
     "type": "pubsub.profileChanged",
   },
-  Object {
-    "message": Object {
-      "data": Object {
+  {
+    "message": {
+      "data": {
         "profilePicture": "http://picture.com",
         "username": "testuser1",
       },
