@@ -10,15 +10,40 @@ const dest = path.join(__dirname, '..', 'src', 'generated.ts')
 async function main() {
     const { data } = await axios.get<any>(source)
 
+    const nameCache: Record<string, boolean> = {}
     const imports: string[] = []
     const output: string[] = ['export type GoogleEvents = {']
 
-    data.schemas.forEach((schema: any) => {
-        imports.push(`import { ${schema.name} } from '@${schema.datatype.replaceAll('.', '/')}'`)
-        schema.cloudeventTypes.forEach((type: string) => {
-            output.push(`  '${type}': ${schema.name}`)
-        })
-    })
+    function getShortName(name: string, counter = 0) {
+        const nameOption = (counter > 0) ? `${name}${counter}` : name
+
+        if (nameCache[nameOption]) {
+            return getShortName(name, counter + 1)
+        }
+
+        nameCache[nameOption] = true
+        return nameOption
+    }
+
+    for (let index = 0; index < data.schemas.length; index++) {
+        const schema = data.schemas[index];
+
+        try {
+
+            await fs.stat(path.join(__dirname, '..', 'node_modules', '@' + schema.datatype.replaceAll('.', '/') + '.js'))
+
+            const shortName = getShortName(schema.name)
+
+            const asRename = (shortName !== schema.name) ? ` as ${shortName}` : ''
+
+            imports.push(`import { ${schema.name}${asRename} } from '@${schema.datatype.replaceAll('.', '/')}'`)
+            schema.cloudeventTypes.forEach((type: string) => {
+                output.push(`  '${type}': ${shortName}`)
+            })
+        } catch (error: any) {
+            // pass
+        }
+    }
     output.push(`}`)
 
     const finalFile = imports.join('\n') + '\n\n' + output.join('\n')
