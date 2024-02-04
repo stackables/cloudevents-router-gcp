@@ -31,6 +31,9 @@ devDependencies:
   cloudevents:
     specifier: ^8.0.0
     version: 8.0.0
+  jest:
+    specifier: ^29.7.0
+    version: 29.7.0(@types/node@20.11.16)(ts-node@10.9.2)
   object-hash:
     specifier: ^3.0.0
     version: 3.0.0
