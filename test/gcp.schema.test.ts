@@ -4,5 +4,5 @@ import { source } from "../tools/generate";
 
 test("GCP schema has not changed since last build", async () => {
 	const { data } = await axios.get(source);
-	expect(hash(data)).toBe("b6fb2f83ab3539c2c5d888e6dcfbbfbc84455a8f");
+	expect(hash(data)).toBe("350009fecfc410ff8e956888119d9159b64e2041");
 });

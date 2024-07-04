@@ -18,6 +18,10 @@ export type GoogleEvents = {
   'google.cloud.firestore.document.v1.updated': DocumentEventData
   'google.cloud.firestore.document.v1.deleted': DocumentEventData
   'google.cloud.firestore.document.v1.written': DocumentEventData
+  'google.cloud.firestore.document.v1.created.withAuthContext': DocumentEventData
+  'google.cloud.firestore.document.v1.updated.withAuthContext': DocumentEventData
+  'google.cloud.firestore.document.v1.deleted.withAuthContext': DocumentEventData
+  'google.cloud.firestore.document.v1.written.withAuthContext': DocumentEventData
   'google.cloud.pubsub.topic.v1.messagePublished': MessagePublishedData
   'google.cloud.scheduler.job.v1.executed': SchedulerJobData
   'google.cloud.storage.object.v1.finalized': StorageObjectData
