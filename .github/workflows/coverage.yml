@@ -16,8 +16,8 @@ jobs:
         with:
           node-version: "20"
       - name: Install dependencies
-        run: pnpm install
+        run: npm install
       - name: Run the tests
-        run: pnpm test -- --coverage
+        run: npm test -- --coverage
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v1
