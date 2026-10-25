@@ -1,3 +1,6 @@
+> [!WARNING]
+> **No longer maintained.** This repository is archived. `cloudevents-router-gcp` stays on npm at its last version (2.1.0), but gets no further updates or security fixes.
+
 [![npm](https://img.shields.io/npm/v/cloudevents-router-gcp?label=cloudevents-router-gcp&logo=npm)](https://www.npmjs.com/package/cloudevents-router-gcp)
 [![codecov](https://codecov.io/gh/stackables/cloudevents-router-gcp/branch/main/graph/badge.svg?token=aG61BAKNaU)](https://codecov.io/gh/stackables/cloudevents-router-gcp)
 
